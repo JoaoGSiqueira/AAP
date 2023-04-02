@@ -1,0 +1,86 @@
+﻿@model QCuidadoAdmins.Models.Funcionario
+
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/cssmanual/lista.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <title>Consulta de Funcionários</title>
+</head>
+<body>
+    <div id="visualizar">
+        <div id="cabecalho">
+            <h3>Detalhes do Funcionário</h3>
+        </div>
+        <div>
+            <a class="btn btn-outline-success" href="/Funcionario/Consultar" role="button"><i class="bi-bi-pencil">Voltar</i></a>
+        </div>
+        <br />
+        <div>
+            <table class="table table-bordered">
+
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NOME_FUNCIONARIO)</th>
+                    <td>@Html.DisplayFor(model => model.NOME_FUNCIONARIO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.EMAIL_FUNCIONARIO)</th>
+                    <td>@Html.DisplayFor(model => model.EMAIL_FUNCIONARIO)</td>
+
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.SENHA_FUNCIONARIO)</th>
+                    <td>@Html.DisplayFor(model => model.SENHA_FUNCIONARIO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.DATA_NASCIMENTO)</th>
+                    <td>@Html.DisplayFor(model => model.DATA_NASCIMENTO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.SEXO)</th>
+                    <td>@Html.DisplayFor(model => model.SEXO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CELULAR_FUNCIONARIO)</th>
+                    <td>@Html.DisplayFor(model => model.CELULAR_FUNCIONARIO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CPF)</th>
+                    <td>@Html.DisplayFor(model => model.CPF)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.LOGRADOURO)</th>
+                    <td>@Html.DisplayFor(model => model.LOGRADOURO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CEP)</th>
+                    <td>@Html.DisplayFor(model => model.CEP)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NUMERO_LOGRADOURO)</th>
+                    <td>@Html.DisplayFor(model => model.NUMERO_LOGRADOURO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.BAIRRO)</th>
+                    <td>@Html.DisplayFor(model => model.BAIRRO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CIDADE)</th>
+                    <td>@Html.DisplayFor(model => model.CIDADE)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.ESTADO)</th>
+                    <td>@Html.DisplayFor(model => model.ESTADO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NV_ACESSO)</th>
+                    <td>@Html.DisplayFor(model => model.NV_ACESSO)</td>
+                </tr>
+            </table>
+        </div>
+        <h6>
+            OBS: Nível de Acesso = 1(Administrador) || Nível de Acesso = 2(Funcionário)
+        </h6>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+

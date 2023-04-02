@@ -1,0 +1,6 @@
+Foi utilizado o Visual Studio 2019 Community e o MySql Workbench.
+
+Programação feita utilizando o Framework ASP.NET versão 4.7.2 com suporte ao C#.
+
+CONFIGURAR O CAMINHO DO BANCO NA PASTA (DATA), NA CLASSE DE (CONEXÃO).
+

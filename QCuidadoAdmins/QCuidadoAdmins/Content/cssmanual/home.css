@@ -1,0 +1,35 @@
+﻿body {
+    position:fixed;
+}
+
+.home {
+   position:fixed;
+   top:50px;
+   left:550px;
+   width:650px;
+   height:600px;
+}
+
+img{
+    width:750px;
+    height:700px;
+}
+
+@media only screen and (max-width: 950px) {
+    .home {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home {
+        width: 100%;
+        height: auto;
+    }
+
+    img {
+        width: 50vw;
+    }
+
+    
+}

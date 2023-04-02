@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil-Q Cuidado!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Styles/reset.css">
+    <link rel="stylesheet" href="~/Content/Styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&dislpay=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <nav>
+                <h1><img src="~/Content/img/logo.png" alt="log dam empresa"></h1>
+                <ul>
+                    <li><a href="/Home/Homepage">Home</a></li>
+                    <li><a href="/Home/Servicos">Serviços</a></li>
+                    @if (Session["usuarioLogado"] != null)
+                    {
+                        <li><a href="/Perfil/Perfil">Perfil</a></li>
+                        <li><a href="/Login/Logout">Sair da conta</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Cadastro">Cadastro</a></li>
+                        <li><a href="/Login/Login">Login</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div style="text-align:center;">
+            <div>
+                <a class="btn btn-outline-warning btn-lg" role="button" href="@Url.Action("DesativarConta", new { id= Session["cliente_id"]})"><i>Desativar Conta</i></a>
+            </div>
+            <br />
+            <div>
+                <a href="@Url.Action("AtivarConta", new {id= Session["cliente_id"] })" class="btn btn-outline-success btn-lg" role="button"><i> Ativar conta</i></a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <img src="~/Content/img/logo.png">
+        <p class="copyright">&copy;Copyright Q Cuidado! - 2022</p>
+    </footer>
+</body>
+
+</html>

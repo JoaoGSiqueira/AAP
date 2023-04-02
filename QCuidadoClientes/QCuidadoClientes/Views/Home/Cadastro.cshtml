@@ -1,0 +1,174 @@
+﻿@model QCuidadoClientes.Models.Cliente
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro-Q Cuidado!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Styles/reset.css">
+    <link rel="stylesheet" href="~/Content/Styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&dislpay=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="~/Content/assets/cleave.min.js"></script>
+    <script src="~/Content/assets/cep.js"></script>
+    <script src="~/Content/assets/maskedinput.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <nav>
+                <h1><img src="~/Content/img/logo.png" alt="Logo do aplicativo"></h1>
+                <ul>
+                    <li><a href="/Home/Homepage">Home</a></li>
+                    <li><a href="/Home/Servicos">Serviços</a></li>
+                    @if (Session["usuarioLogado"] != null)
+                    {
+                        <li><a href="/Perfil/Perfil">Perfil</a></li>
+                        <li><a href="/Login/Logout">Sair da conta</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Cadastro">Cadastro</a></li>
+                        <li><a href="/Login/Login">Login</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <main>
+            <div style="padding-left:190px;">
+                <div class="col-md-9 col-lg-12">
+                    <label class="mb-3" style="text-align:center; font-size:40px;">Cadastro de Cliente</label>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.NOME_CLIENTE, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NOME_CLIENTE, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.NOME_CLIENTE, new { htmlAttributes = new { @class = "form-input form-control", @placeholder = " " } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.DATA_NASCIMENTO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.DATA_NASCIMENTO, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.DATA_NASCIMENTO, new { htmlAttributes = new { @class = "form-input form-control", type = "date" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.EMAIL_CLIENTE, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.EMAIL_CLIENTE, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.EMAIL_CLIENTE, new { htmlAttributes = new { @class = "form-input form-control", type = "email" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.SENHA_CLIENTE, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.SENHA_CLIENTE, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.SENHA_CLIENTE, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.SEXO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.SEXO, "", new { @class = "text-danger" })
+                            @Html.DropDownList("SEXO", new List<SelectListItem> {
+                                new SelectListItem{ Text= "Masculino", Value="M"},
+                                new SelectListItem{ Text= "Feminino", Value="F" },
+
+
+                                }, "Selecione um Sexo", htmlAttributes: new { @class = "form-input form-control", @placeholder = "" })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-input form-control" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.CELULAR_CLIENTE, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CELULAR_CLIENTE, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.CELULAR_CLIENTE, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.CELULAR_FAMILIA, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CELULAR_FAMILIA, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.CELULAR_FAMILIA, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.LOGRADOURO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.LOGRADOURO, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.LOGRADOURO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.NUMERO_LOGRADOURO, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NUMERO_LOGRADOURO, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.NUMERO_LOGRADOURO, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.BAIRRO, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NUMERO_LOGRADOURO, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.BAIRRO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.CIDADE, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CIDADE, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.CIDADE, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.ESTADO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.ESTADO, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ESTADO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                        </div>
+                            @Html.LabelFor(model => model.INFOS_ADICIONAIS, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.INFOS_ADICIONAIS, "", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.INFOS_ADICIONAIS, new { htmlAttributes = new { @class = "form-input form-control-lg" } })
+
+                    </div>
+                    <br />
+                    <div class="botao_enviar" style="text-align:center;">
+                        <input type="submit" value="Cadastrar" class="btn btn-outline-primary btn-lg" />
+                        <br />
+                        @if (TempData["AlertMessage"] != null)
+                        {
+                            <div class="alert alert-success" id="alerta">
+                                <strong>@TempData["AlertMessage"]</strong>
+                            </div>
+                        }
+                        <div class="erro">
+                            <strong>@ViewBag.msgErro</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    }
+
+    <footer>
+        <img src="~/Content/img/logo.png" alt="Logo do aplicativo">
+        <p class="copyright">&copy;Copyright Q Cuidado! - 2022</p>
+    </footer>
+
+
+    <script>
+        new Cleave('#CPF', {
+            delimiters: ['.', '.', '-'],
+            blocks: [3, 3, 3, 2],
+            numericOnly: true
+        });
+    </script>
+
+
+    <script>
+        $("#CELULAR_CLIENTE").mask("(99) 99999-9999");
+        $("#CELULAR_FAMILIA").mask("(99) 99999-9999");
+    </script>
+
+
+</body>
+</html>

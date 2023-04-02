@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Serviços-Q Cuidado!</title>
+    <link rel="stylesheet" href="~/Content/Styles/reset.css">
+    <link rel="stylesheet" href="~/Content/Styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&dislpay=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <nav>
+                <h1><img src="~/Content/img/logo.png" alt="log dam empresa"></h1>
+                <ul>
+                    <li><a href="/Home/Homepage">Home</a></li>
+                    <li><a href="/Home/Servicos">Serviços</a></li>
+                    @if (Session["usuarioLogado"] != null)
+                    {
+                        <li><a href="/Perfil/Perfil">Perfil</a></li>
+                        <li><a href="/Login/Logout">Sair da conta</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Cadastro">Cadastro</a></li>
+                        <li><a href="/Login/Login">Login</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <ul class="servicos">
+            <li>
+                <h2>Dia a dia</h2>
+                <img src="~/Content/img/QC.png">
+                <p class="servico-descricao">Auxilio tarefas do dia a dia <br> 6 horas</p>
+                <p class="servico-preco">R$130</p>
+            </li>
+            <li>
+                <h2>Domiciliar</h2>
+                <img src="~/Content/img/QC.png">
+                <p class="servico-descricao">Atendimento domiciliar <br> 8 horas </p>
+                <p class="servico-preco">R$150</p>
+            </li>
+            <li>
+                <h2>Hospitalar</h2>
+                <img src="~/Content/img/QC.png">
+                <p class="servico-descricao">Acompanhamento Hospitalar <br> 12 horas<p />
+                <p class="servico-preco">R$190</p>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <img src="~/Content/img/logo.png">
+        <p class="copyright">&copy;Copyright Q Cuidado! - 2022</p>
+    </footer>
+</body>
+
+</html>

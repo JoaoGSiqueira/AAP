@@ -1,0 +1,83 @@
+﻿@model IPagedList<QCuidadoAdmins.Models.Prestador>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Consultar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/cssmanual/lista.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <title>Consulta de Prestadores</title>
+</head>
+<body>
+    <div id="consultar">
+        <div id="cabecalho">
+            <h3>Prestadores</h3>
+        </div>
+        <div>
+            <a class="btn btn-outline-success" href="/Prestador/Cadastrar" role="button"><i class="bi-bi-pencil">NOVO</i></a>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table id="grid_cadastro" class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().NOME_PRESTADOR)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().EMAIL_PRESTADOR)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().CPF)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().NOME_EMPRESA)
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                    @if (Model.Count() == 0)
+                    {
+                        <h2>Não possui Prestadores</h2>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <tr data-id="@item.PRESTADOR_ID">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NOME_PRESTADOR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EMAIL_PRESTADOR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CPF)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NOME_EMPRESA)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Visualizar", new { id=item.PRESTADOR_ID })" class="btn btn-outline-success" role="button"><i>Detalhes</i></a>
+                                    <a href="@Url.Action("Editar", new { id=item.PRESTADOR_ID})" class="btn btn-outline-warning" role="button"><i> Alterar</i></a>
+                                    <a class="btn btn-outline-danger" role="button" href="@Url.Action("Excluir", new { id=item.PRESTADOR_ID})" onclick="return confirm('Deseja realmente excluir?');"><i> Excluir</i></a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+        @Html.PagedListPager(Model, i => Url.Action("Consultar", "PRESTADOR", new { i, search = Request.QueryString["search"] }))
+    </div>
+</body>
+</html>

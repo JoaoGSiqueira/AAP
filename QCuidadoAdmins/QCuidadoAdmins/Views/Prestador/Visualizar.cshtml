@@ -1,0 +1,73 @@
+﻿@model QCuidadoAdmins.Models.Prestador
+
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/cssmanual/lista.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <title>Consulta de Prestador</title>
+</head>
+<body>
+    <div id="visualizar">
+        <div id="cabecalho">
+            <h3>Detalhes do Prestador</h3>
+        </div>
+        <div>
+            <a class="btn btn-outline-success" href="/Prestador/Consultar" role="button"><i class="bi-bi-pencil">Voltar</i></a>
+        </div>
+        <br />
+        <div>
+            <table class="table table-bordered">
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NOME_PRESTADOR)</th>
+                    <td>@Html.DisplayFor(model => model.NOME_PRESTADOR)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.EMAIL_PRESTADOR)</th>
+                    <td>@Html.DisplayFor(model => model.EMAIL_PRESTADOR)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.DATA_NASCIMENTO)</th>
+                    <td>@Html.DisplayFor(model => model.DATA_NASCIMENTO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.SEXO)</th>
+                    <td>@Html.DisplayFor(model => model.SEXO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CELULAR_PRESTADOR)</th>
+                    <td>@Html.DisplayFor(model => model.CELULAR_PRESTADOR)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CPF)</th>
+                    <td>@Html.DisplayFor(model => model.CPF)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NOME_EMPRESA)</th>
+                    <td>@Html.DisplayFor(model => model.NOME_EMPRESA)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CEP)</th>
+                    <td>@Html.DisplayFor(model => model.CEP)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.LOGRADOURO)</th>
+                    <td>@Html.DisplayFor(model => model.LOGRADOURO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.NUMERO_LOGRADOURO)</th>
+                    <td>@Html.DisplayFor(model => model.NUMERO_LOGRADOURO)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.BAIRRO)</th>
+                    <td>@Html.DisplayFor(model => model.BAIRRO)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.CIDADE)</th>
+                    <td>@Html.DisplayFor(model => model.CIDADE)</td>
+                    <th scope="row" class="color">@Html.DisplayNameFor(model => model.ESTADO)</th>
+                    <td>@Html.DisplayFor(model => model.ESTADO)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

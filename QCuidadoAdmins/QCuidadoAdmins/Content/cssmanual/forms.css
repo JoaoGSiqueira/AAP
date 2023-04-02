@@ -1,0 +1,31 @@
+﻿body{
+position:fixed;
+}
+
+.tabela {
+    border: 10px solid black;
+}
+.forms {
+    position: relative;
+    top: 12px;
+    left: 500px;
+}
+
+.mb-3{
+    text-align:center;
+}
+
+.buttonn {
+    text-align: center;
+    padding-bottom:3px;
+}
+
+.erro {
+    color: red;
+    margin-top: 10px;
+}
+
+#alerta
+{
+    margin-top:10px;
+}

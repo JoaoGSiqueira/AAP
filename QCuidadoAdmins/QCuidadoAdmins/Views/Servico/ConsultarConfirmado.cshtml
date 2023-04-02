@@ -1,0 +1,79 @@
+﻿@model IPagedList<QCuidadoAdmins.Models.Servicos>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ConsultarConfirmado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/cssmanual/lista.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <title>Consulta de Serviços Solicitados</title>
+</head>
+<body>
+    <div id="consultar">
+        <div id="cabecalho">
+            <h3>Confirmados</h3>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table id="grid_cadastro" class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().TIPO_SERVICO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().DESC_SERVICO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().STATUSSERVICO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().LOCAL_INICIO)
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                    @if (Model.Count() == 0)
+                    {
+                        <h2>Não possui solicitações pendentes</h2>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <tr data-id="@item.AGENDASERVICO_ID">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TIPO_SERVICO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DESC_SERVICO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STATUSSERVICO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LOCAL_INICIO)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("VisualizarConfirmado", new { id=item.AGENDASERVICO_ID })" class="btn btn-outline-success" role="button"><i>Detalhes</i></a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+        @Html.PagedListPager(Model, i => Url.Action("ConsultarConfirmado", "Servico", new { i, search = Request.QueryString["search"] }))
+    </div>
+</body>
+</html>

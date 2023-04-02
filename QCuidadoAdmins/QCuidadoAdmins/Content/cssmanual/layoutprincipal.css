@@ -1,0 +1,155 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/*body {
+    position:fixed;
+    top:0;
+    margin: 0;
+    padding: 0;
+}*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    background-color: #c1f7f7;
+    padding: 15px;
+    width: 100%;
+    height: 6.92% auto;
+}
+
+.left {
+    position: relative;
+    top: 5px;
+}
+
+h3 {
+    font-family: sans-serif;
+}
+
+.left h3 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 800;
+    margin-top: -10px;
+}
+
+.sair_btn {
+    height: 100%;
+    padding: 5px;
+    background-color: #23adec;
+    text-decoration: none;
+    float: right;
+    margin-top: -28px;
+    margin-right: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+    .sair_btn:hover {
+        background-color: white;
+    }
+
+#iconeSair {
+    position: relative;
+    top: 3px;
+}
+
+.side-bar {
+    position: fixed;
+    top: 59px;
+    left: 0px;
+    bottom: 20px;
+    width: 305px;
+    background: #c1f7f7;
+    min-height: 100vh;
+    box-sizing: initial;
+    border-left: 5px solid #c1f7f7;
+    transition: 0.5s;
+}
+
+    .side-bar .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-left: 5px;
+        padding-top: 5px;
+    }
+
+        .side-bar .menu .item {
+            position: relative;
+            cursor: pointer;
+        }
+
+            .side-bar .menu .item a {
+                color: black;
+                text-decoration: none;
+                font-size: 20px;
+                display: block;
+                padding: 5px 30px;
+                line-height: 40px;
+            }
+
+            .side-bar .menu .item.active {
+                background: #fff;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+
+            .side-bar .menu .item .sub-menu .sub-item:hover {
+                background: #0b70e2;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+
+            .side-bar .menu .item ion-icon {
+                margin-right: 5px;
+            }
+
+            .side-bar .menu .item a .dropdown {
+                position: absolute;
+                right: 0;
+                margin: 20px;
+                margin-top: 15px;
+            }
+
+            .side-bar .menu .item .sub-menu {
+                display: none;
+            }
+
+                .side-bar .menu .item .sub-menu a {
+                    padding-left: 80px;
+                }
+
+
+header #linha {
+    position: fixed;
+    margin-top: 24px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0.1cm;
+    background-color: black;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.side-bar .menu .item .sub-menu .sub-item {
+    font-size: 15px;
+}
+
+.side-bar .menu .usuario {
+    padding: 5px 30px;
+}
+

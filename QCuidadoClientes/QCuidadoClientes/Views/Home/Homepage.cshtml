@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Q Cuidado!</title>
+    <link rel="stylesheet" href="~/Content/Styles/reset.css">
+    <link rel="stylesheet" href="~/Content/Styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&dislpay=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <nav>
+                <h1><img src="~/Content/img/logo.png" alt=""></h1>
+                <ul>
+                    <li><a href="/Home/Homepage">Home</a></li>
+                    <li><a href="/Home/Servicos">Serviços</a></li>
+                    @if (Session["usuarioLogado"] != null)
+                    {
+                        <li><a href="/Perfil/Perfil">Perfil</a></li>
+                        <li><a href="/Login/Logout">Sair da conta</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="/Home/Cadastro">Cadastro</a></li>
+                        <li><a href="/Login/Login">Login</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="banner">
+        <img src="~/Content/img/imagem4.jpg">
+        <img src="~/Content/img/imagem1.png">
+    </div>
+
+    <main></main>
+    <section class="principal">
+        <h2 class="titulo-principal"> Sobre o Q Cuidado! </h2>
+
+        <img class="utensilios" src="~/Content/img/hospitalar.jpg" alt="estetoscópio">
+
+        <p>
+            Nem todos os idosos podem contar com um acompanhamento a qualquer momento, a aplicação <strong>
+                Q
+                Cuidado
+            </strong> traz para o mercado uma junção de praticidade e cuidado para quem está na melhor
+            idade.
+        </p>
+
+        <p id="missao">
+            <em>
+                Nossa missão é: <strong>
+                    "Proporcionar o mais seguro aplicativo que une acompanhamento privado
+                    e
+                    cuidado a
+                    quem está na melhor idade"
+                </strong>.
+            </em>
+        </p>
+
+        <p>
+            Oferecemos profissionais experientes e capacitados para que acompanhe e auxilie os pacientes em suas
+            atividades
+            do
+            cotidiano de forma segura.
+        </p>
+    </section>
+    <section class="beneficios">
+        <h3 class="titulo-principal">Beneficios</h3>
+        <div>
+            <ul class="lista-beneficios">
+                <li class="itens">Qualidade de vida para o paciente</li>
+                <li class="itens"> Segurança para a família</li>
+                <li class="itens">Profissionais qualificados</li>
+                <li class="itens">Atendimento personalizado</li>
+                <li class="itens">Redução de custos</li>
+            </ul><img src="~/Content/img/beneficios.png" class="imagem_beneficios">
+        </div>
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/cAHYpCqtT08"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
+    <footer>
+        <img src="~/Content/img/logo.png">
+        <p class="copyright">&copy;Copyright Q Cuidado! - 2022</p>
+    </footer>
+</body>
+
+</html>

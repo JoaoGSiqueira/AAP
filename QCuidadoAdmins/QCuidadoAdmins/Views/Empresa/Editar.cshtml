@@ -1,0 +1,86 @@
+﻿@model QCuidadoAdmins.Models.Empresa
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="~/Content/cssmanual/forms.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EMPRESA_ID)
+        <div class="forms">
+            <div class="col-md-9 col-lg-7">
+                <h4 class="mb-3">Alteração de Empresa</h4>
+                <div class="row g-2">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.NOME_EMPRESA, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NOME_EMPRESA, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NOME_EMPRESA, new { htmlAttributes = new { @class = "form-input form-control", @placeholder = " " } })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-input form-control", @placeholder = " " } })
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.TELEFONE_EMPRESA, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.TELEFONE_EMPRESA, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.TELEFONE_EMPRESA, new { htmlAttributes = new { @class = "form-input form-control", @placeholder = " " } })
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.LOGRADOURO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.LOGRADOURO, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.LOGRADOURO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.LabelFor(model => model.NUMERO_LOGRADOURO, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NUMERO_LOGRADOURO, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NUMERO_LOGRADOURO, new { htmlAttributes = new { @class = "form-input form-control" } })
+
+                    </div>
+                    <div class="col-sm-5">
+                        @Html.LabelFor(model => model.BAIRRO, htmlAttributes: new { @class = "form-label" }) @Html.ValidationMessageFor(model => model.NUMERO_LOGRADOURO, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.BAIRRO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.CIDADE, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.CIDADE, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CIDADE, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.LabelFor(model => model.ESTADO, htmlAttributes: new { @class = "form-label" })@Html.ValidationMessageFor(model => model.ESTADO, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ESTADO, new { htmlAttributes = new { @class = "form-input form-control", @readonly = "" } })
+
+                    </div>
+                </div>
+                <br />
+                <div class="buttonn">
+                    <input type="submit" value="Editar" class="btn btn-outline-primary btn-lg" onclick="return confirm('Deseja realmente alterar?');" /> <a role="button" class="btn btn-outline-success" href="/Empresa/Consultar"><i>Voltar</i></a>
+                    <br />
+                    <div class="erro">
+                        <strong>@ViewBag.msgErro</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <script>
+        new Cleave('#CNPJ', {
+            delimiters: ['.', '.', '/', '-'],
+            blocks: [2, 3, 3, 4, 2],
+            numericOnly: true
+        });
+    </script>
+</body>
+</html>

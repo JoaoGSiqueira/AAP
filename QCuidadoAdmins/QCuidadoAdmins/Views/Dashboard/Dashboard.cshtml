@@ -1,0 +1,101 @@
+﻿@model IEnumerable<QCuidadoAdmins.Models.Dashboard>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/cssmanual/dashboard.css" />
+
+@if (Model != null)
+{
+
+    foreach (var item in Model)
+    {
+<div class="dashboard">
+    <div class="d-flex flex-column align-items-center">
+
+        <div class="container">
+            <div class="row">
+                @if (item.Funcionarios != 1)
+                {
+                    <div class="col-12 col-md-4">
+                        <div class="shadow bg-success p-3 rounded">
+                            <h3 class="text-white text-center fw-bold">Funcionários</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">@item.Funcionarios</h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+                @if (item.Clientes != 1)
+                {
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="shadow bg-info p-3 rounded">
+                            <h3 class="text-white text-center fw-bold">Clientes</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">@item.Clientes</h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                @if (item.Empresas != 1)
+                {
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="shadow bg-warning p-3 rounded">
+                            <h3 class="text-white text-center fw-bold">Empresas</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">@item.Empresas</h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+                @if (item.Prestadores != 1)
+                {
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="shadow  p-3 rounded" style="background-color: #6f42c1 ">
+                            <h3 class="text-white text-center fw-bold">Prestadores</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">@item.Prestadores</h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                @if (item.Servicos != 1)
+                {
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="shadow  p-3 bg-danger rounded">
+                            <h3 class="text-white text-center fw-bold">Serviços</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">@item.Servicos<i class="bi bi-journal-bookmark text-white ms-4"></i></h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+                @if (item.Caixa != 1)
+                {
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="shadow  p-3 rounded" style="background-color: #0d6efd">
+                            <h3 class="text-white text-center fw-bold">Caixa</h3>
+                            <div class="d-flex justify-content-center mt-3">
+                                <h4 class="text-white text-start fw-bold">R$@item.Caixa</h4>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>}
+            </div>
+        </div>
+    </div>
+</div>}
+}

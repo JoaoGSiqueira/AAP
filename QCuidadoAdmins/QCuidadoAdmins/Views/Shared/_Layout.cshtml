@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="ptr-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/cssmanual/layoutprincipal.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+    <script src="~/Content/assets/cleave.min.js"></script>
+    <script src="~/Content/assets/cep.js"></script>
+</head>
+<body>
+    <header>
+        <div class="left">
+            <h3>Q Cuidado!</h3>
+        </div>
+        <div class="right">
+            <a href="/Login/Logout" class="sair_btn">
+                <ion-icon name="log-out" id="iconeSair"></ion-icon>Sair
+            </a>
+        </div>
+        <div id="linha">
+        </div>
+    </header>
+    <div class="side-bar">
+        <div class="menu">
+            <div class="usuario">
+                <h6>Usuário: @ViewBag.usuario</h6>
+            </div>
+            <div class="item active">
+                <a href="/Home/Index">
+                    <ion-icon name="home"></ion-icon> Home
+                </a>
+            </div>
+            <div class="item">
+                <a href="/Dashboard/Dashboard">
+                    <ion-icon name="podium"></ion-icon>Dashboard
+                </a>
+            </div>
+            <div class="item">
+                <a class="sub-btn">
+                    <ion-icon name="man"></ion-icon> Funcionário<i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="/Funcionario/Cadastrar" class="sub-item"><ion-icon name="person-add"></ion-icon>Cadastrar</a>
+                    <a href="/Funcionario/Consultar" class="sub-item"><ion-icon name="eye"></ion-icon>Consultar</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn">
+                    <ion-icon name="body"></ion-icon> Cliente<i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="/Cliente/Consultar" class="sub-item"><ion-icon name="eye"></ion-icon>Consultar</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn">
+                    <ion-icon name="business"></ion-icon> Empresa<i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="/Empresa/Cadastrar" class="sub-item"><ion-icon name="person-add"></ion-icon>Cadastrar</a>
+                    <a href="/Empresa/Consultar" class="sub-item"><ion-icon name="eye"></ion-icon>Consultar</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn">
+                    <ion-icon name="people"></ion-icon> Prestador<i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="/Prestador/Cadastrar" class="sub-item"><ion-icon name="person-add"></ion-icon>Cadastrar</a>
+                    <a href="/Prestador/Consultar" class="sub-item"><ion-icon name="eye"></ion-icon>Consultar</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn">
+                    <ion-icon name="bag"></ion-icon> Serviços solicitados<i class="fas fa-angle-right dropdown"></i>
+                </a>
+                <div class="sub-menu">
+                    <a href="/Servico/Consultar" class="sub-item"><ion-icon name="alert-circle"></ion-icon>Pendentes</a>
+                    <a href="/Servico/ConsultarConfirmado" class="sub-item"><ion-icon name="document"></ion-icon>Confirmados</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-5">
+        @RenderBody();
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        let list = document.querySelectorAll('.item');
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function () {
+                let j = 0;
+                while (j < list.length) {
+                    list[j++].className = 'item';
+                }
+                list[i].className = 'item active';
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sub-btn').click(function () {
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+
+            });
+        });
+    </script>
+
+    <script src="~/Content/assets/maskedinput.min.js"></script>
+    <script>
+        $("#CELULAR_FUNCIONARIO").mask("(99) 99999-9999");
+        $("#CELULAR_PRESTADOR").mask("(99) 99999-9999");
+        $("#TELEFONE_EMPRESA").mask("(99) 9999-9999")
+    </script>
+
+    @Scripts.Render("/bundles/inputmask")
+    @RenderSection("scripts", required: false)
+</body>
+
+      
+ 
+</html>

@@ -1,0 +1,106 @@
+﻿@model IPagedList<QCuidadoClientes.Models.Agendaservico>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitar Servico-Q Cuidado!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Styles/reset.css">
+    <link rel="stylesheet" href="~/Content/Styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&dislpay=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <nav>
+                <h1><img src="~/Content/img/logo.png" alt="Logo do aplicativo"></h1>
+                <ul>
+                    <li><a href="/Home/Homepage">Home</a></li>
+                    <li><a href="/Home/Servicos">Serviços</a></li>
+                    <li><a href="/Home/Cadastro">Cadastro</a></li>
+                    <li><a href="/Login/Login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div id="consultar">
+            <div id="cabecalho">
+                <h3>Funcionários</h3>
+            </div>
+            <div>
+                <a class="btn btn-outline-success" href="/Funcionario/Cadastrar" role="button"><i class="bi-bi-pencil">NOVO</i></a>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="grid_cadastro" class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().TIPO_SERVICO)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().DESC_SERVICO)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().NOME_PRESTADOR)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().STATUSSERVICO)
+                            </th>
+                            <th>Ações</th>
+                        </tr>
+                        @if (Model.Count() == 0)
+                        {
+                            <h2>Não possui solicitações</h2>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TIPO_SERVICO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DESC_SERVICO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NOME_PRESTADOR)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.STATUSSERVICO)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Visualizar", new { id=item.AGENDASERVICO_ID })" class="btn btn-outline-success" role="button"><i>Detalhes</i></a>
+                                        <a href="@Url.Action("Editar", new { id=item.AGENDASERVICO_ID })" class="btn btn-outline-warning" role="button"><i> Alterar</i></a>
+                                        <a class="btn btn-outline-danger" role="button" href="@Url.Action("Excluir", new { id=item.AGENDASERVICO_ID})" onclick="return confirm('Deseja realmente excluir?');"><i> Excluir</i></a>
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+            @*@Html.PagedListPager(Model, i => Url.Action("Historico", "Perfil", new { i, search = Request.QueryString["search"] }))*@
+        </div>
+    </main>
+
+    <footer>
+        <img src="~/Content/img/logo.png" alt="Logo do aplicativo">
+        <p class="copyright">&copy;Copyright Q Cuidado! - 2022</p>
+    </footer>
+</body>
+</html>

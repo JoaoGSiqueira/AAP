@@ -1,0 +1,86 @@
+﻿@model IPagedList<QCuidadoAdmins.Models.Cliente>
+@using PagedList;
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Consultar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/cssmanual/lista.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <title>Consulta de Clientes</title>
+</head>
+<body>
+    <div id="consultar">
+        <div id="cabecalho">
+            <h3>Clientes</h3>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table id="grid_cadastro" class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().NOME_CLIENTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().EMAIL_CLIENTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().CELULAR_CLIENTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().CPF)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().DS_STATUS)
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                    @if (Model.Count() == 0)
+                    {
+                        <h2>Não possui Clientes</h2>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <tr data-id="@item.CLIENTE_ID">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NOME_CLIENTE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EMAIL_CLIENTE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CELULAR_CLIENTE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CPF)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DS_STATUS)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Visualizar", new { id=item.CLIENTE_ID })" class="btn btn-outline-success" role="button"><i>Detalhes</i></a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+        @Html.PagedListPager(Model, i => Url.Action("Consultar", "Cliente", new { i, search = Request.QueryString["search"] }))
+    </div>
+</body>
+</html>
+
+

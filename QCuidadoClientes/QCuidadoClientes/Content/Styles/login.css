@@ -1,0 +1,51 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+.container-login {
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    overflow: hidden;
+}
+
+.form-login {
+    margin: 0 auto;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 200px auto;
+    margin-bottom: 10%;
+}
+
+h1 {
+    padding-bottom: 30px;
+}
+
+#email, #password {
+    width: 650px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.input-login {
+    margin-bottom: 5px;
+}
+
+.btn {
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.imagem_login {
+    width: 719px;
+    float: right;
+}
